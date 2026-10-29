@@ -1,9 +1,6 @@
 strictPeerDependencies: true
+# Temporary: tsgo 0.63.0 clears pnpm's 24-hour window on 2026-10-29 at 12:17 UTC.
 minimumReleaseAgeExclude:
-  - "@effect/platform-node-shared@4.0.7"
-  - "@effect/platform-node@4.0.7"
-  - "@effect/vitest@4.0.7"
-  - effect@4.0.7
   - "@effect/tsgo-darwin-arm64@0.63.0"
   - "@effect/tsgo-darwin-x64@0.63.0"
   - "@effect/tsgo-linux-arm64@0.63.0"
