@@ -1,0 +1,397 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Official draft 2020-12 corpus (3.1.2) > records all diagnosed schema groups explicitly 1`] = `
+[
+  {
+    "description": "additionalProperties being false does not allow other properties",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot import this closed patterned object: only one pattern without properties is supported.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "additionalProperties with schema",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot combine typed "additionalProperties" with other property schemas: Effect index signatures also check excluded keys.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "dependentSchemas with additionalProperties",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "dependentSchemas": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["dependentSchemas"]",
+  },
+  {
+    "description": "allOf combined with anyOf, oneOf",
+    "file": "allOf.json",
+    "reason": "Unsupported input schema: Cannot intersect these "anyOf" or "oneOf" alternatives without expanding their branches.
+  at ["schema"]["properties"]["body"]["anyOf"]["types"][0]",
+  },
+  {
+    "description": "const with object",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with array",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with [false] does not match [0]",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with [true] does not match [1]",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with {"a": false} does not match {"a": 0}",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with {"a": true} does not match {"a": 1}",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "heterogeneous enum validation",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][2]",
+  },
+  {
+    "description": "enum with [false] does not match [0]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [true] does not match [1]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [0] does not match [false]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [1] does not match [true]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "items and subitems",
+    "file": "items.json",
+    "reason": "Unsupported input schema: Embedded $defs are not supported; use components.schemas.",
+  },
+  {
+    "description": "not",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "not multiple types",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "not more complex schema",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "forbid everything with boolean schema true",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "allow everything with boolean schema false",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "double negation",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "collect annotations inside a 'not', even if collection is disabled",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "patternProperties validates properties matching a regex",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "multiple simultaneous patternProperties are validated",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "regexes are not anchored by default and are case sensitive",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with boolean schemas",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with null valued instance properties",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with Unicode property escape",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "properties, patternProperties, additionalProperties interaction",
+    "file": "properties.json",
+    "reason": "Unsupported input schema: Cannot combine typed "additionalProperties" with other property schemas: Effect index signatures also check excluded keys.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "properties whose names are Javascript object property names",
+    "file": "properties.json",
+    "reason": "Unsupported input schema: Prototype-named schema properties are not supported: toString",
+  },
+]
+`;
+
+exports[`Official draft 2020-12 corpus (3.1.2) > records all diagnosed schema groups explicitly 2`] = `
+{
+  "diagnosedGroups": 31,
+  "diagnosedInstances": 131,
+  "supportedGroups": 134,
+  "supportedInstances": 508,
+}
+`;
+
+exports[`Official draft 2020-12 corpus (3.2.1) > records all diagnosed schema groups explicitly 1`] = `
+[
+  {
+    "description": "additionalProperties being false does not allow other properties",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot import this closed patterned object: only one pattern without properties is supported.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "additionalProperties with schema",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot combine typed "additionalProperties" with other property schemas: Effect index signatures also check excluded keys.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "dependentSchemas with additionalProperties",
+    "file": "additionalProperties.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "dependentSchemas": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["dependentSchemas"]",
+  },
+  {
+    "description": "allOf combined with anyOf, oneOf",
+    "file": "allOf.json",
+    "reason": "Unsupported input schema: Cannot intersect these "anyOf" or "oneOf" alternatives without expanding their branches.
+  at ["schema"]["properties"]["body"]["anyOf"]["types"][0]",
+  },
+  {
+    "description": "const with object",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with array",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with [false] does not match [0]",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with [true] does not match [1]",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with {"a": false} does not match {"a": 0}",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "const with {"a": true} does not match {"a": 1}",
+    "file": "const.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["const"]",
+  },
+  {
+    "description": "heterogeneous enum validation",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][2]",
+  },
+  {
+    "description": "enum with [false] does not match [0]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [true] does not match [1]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [0] does not match [false]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "enum with [1] does not match [true]",
+    "file": "enum.json",
+    "reason": "Unsupported input schema: Only primitive values are supported in "const" and "enum".
+  at ["schema"]["properties"]["body"]["enum"][0]",
+  },
+  {
+    "description": "items and subitems",
+    "file": "items.json",
+    "reason": "Unsupported input schema: Embedded $defs are not supported; use components.schemas.",
+  },
+  {
+    "description": "not",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "not multiple types",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "not more complex schema",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "forbid everything with boolean schema true",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "allow everything with boolean schema false",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "double negation",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "collect annotations inside a 'not', even if collection is disabled",
+    "file": "not.json",
+    "reason": "Unsupported input schema: Cannot import JSON Schema keyword "not": Effect has no equivalent constraint.
+  at ["schema"]["properties"]["body"]["not"]",
+  },
+  {
+    "description": "patternProperties validates properties matching a regex",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "multiple simultaneous patternProperties are validated",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "regexes are not anchored by default and are case sensitive",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with boolean schemas",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with null valued instance properties",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "patternProperties with Unicode property escape",
+    "file": "patternProperties.json",
+    "reason": "Unsupported input schema: Cannot import open "patternProperties": unmatched keys cannot be typed correctly.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "properties, patternProperties, additionalProperties interaction",
+    "file": "properties.json",
+    "reason": "Unsupported input schema: Cannot combine typed "additionalProperties" with other property schemas: Effect index signatures also check excluded keys.
+  at ["schema"]["properties"]["body"]",
+  },
+  {
+    "description": "properties whose names are Javascript object property names",
+    "file": "properties.json",
+    "reason": "Unsupported input schema: Prototype-named schema properties are not supported: toString",
+  },
+]
+`;
+
+exports[`Official draft 2020-12 corpus (3.2.1) > records all diagnosed schema groups explicitly 2`] = `
+{
+  "diagnosedGroups": 31,
+  "diagnosedInstances": 131,
+  "supportedGroups": 134,
+  "supportedInstances": 508,
+}
+`;

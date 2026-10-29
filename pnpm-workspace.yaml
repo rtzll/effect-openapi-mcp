@@ -1,0 +1,24 @@
+strictPeerDependencies: true
+minimumReleaseAgeExclude:
+  - "@effect/platform-node-shared@4.0.7"
+  - "@effect/platform-node@4.0.7"
+  - "@effect/vitest@4.0.7"
+  - effect@4.0.7
+  - "@effect/tsgo-darwin-arm64@0.63.0"
+  - "@effect/tsgo-darwin-x64@0.63.0"
+  - "@effect/tsgo-linux-arm64@0.63.0"
+  - "@effect/tsgo-linux-arm@0.63.0"
+  - "@effect/tsgo-linux-x64@0.63.0"
+  - "@effect/tsgo-win32-arm64@0.63.0"
+  - "@effect/tsgo-win32-x64@0.63.0"
+  - "@effect/tsgo@0.63.0"
+# Vite+ manages Node and the package-manager version.
+runtimeOnFail: ignore
+pmOnFail: ignore
+overrides:
+  "vite@*": "npm:@voidzero-dev/vite-plus-core@1.4.0"
+  "vitest@*": "5.0.5"
+# The Vite-compatible core uses Vite+'s version number.
+peerDependencyRules:
+  allowedVersions:
+    vite: "1.4.0"

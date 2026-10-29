@@ -1,0 +1,261 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Disposable mock inventory",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://mock.invalid/v1/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "State": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "ARCHIVED"
+        ]
+      },
+      "Item": {
+        "type": "object",
+        "required": [
+          "label",
+          "state"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/State"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Unused": {
+        "type": "string",
+        "pattern": "^unused$"
+      }
+    }
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "list_items",
+        "tags": [
+          "inventory"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "after",
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "List disposable mock inventory items; optional limit and cursor."
+      },
+      "post": {
+        "operationId": "create_item",
+        "tags": [
+          "inventory"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create a disposable mock item with label and state."
+      }
+    },
+    "/items/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^it_[A-Za-z0-9]+$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "get_item",
+        "tags": [
+          "inventory"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a disposable mock inventory item by its exact item ID."
+      },
+      "patch": {
+        "operationId": "update_item",
+        "tags": [
+          "inventory"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Update a disposable mock item by exact item ID."
+      },
+      "delete": {
+        "operationId": "delete_item",
+        "tags": [
+          "inventory"
+        ],
+        "responses": {
+          "204": {}
+        },
+        "summary": "Delete a disposable mock inventory item by exact item ID."
+      }
+    },
+    "/search": {
+      "post": {
+        "operationId": "search_items",
+        "tags": [
+          "search"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "term"
+                ],
+                "properties": {
+                  "term": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Search disposable mock inventory labels using a term.",
+        "x-mcp-read-only": true
+      }
+    },
+    "/unavailable": {
+      "get": {
+        "operationId": "inventory_unavailable",
+        "summary": "Return a deterministic sanitized mock upstream error.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/slow": {
+      "get": {
+        "operationId": "inventory_slow",
+        "summary": "Wait 30 seconds; intended for cancellation evaluation.",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

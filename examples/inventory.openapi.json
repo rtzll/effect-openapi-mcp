@@ -1,0 +1,214 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Inventory",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://inventory.example.com/v1/"
+    }
+  ],
+  "security": [
+    {
+      "Key": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY"
+      }
+    },
+    "schemas": {
+      "State": {
+        "type": "string",
+        "enum": ["ACTIVE", "ARCHIVED"]
+      },
+      "Item": {
+        "type": "object",
+        "required": ["label", "state"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state": {
+            "type": ["string", "null"],
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/State"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "Unused": {
+        "type": "string",
+        "pattern": "^unused$"
+      }
+    }
+  },
+  "paths": {
+    "/items": {
+      "get": {
+        "operationId": "list_items",
+        "tags": ["inventory"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "after",
+            "schema": {
+              "type": ["string", "null"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create_item",
+        "tags": ["inventory"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^it_[A-Za-z0-9]+$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "get_item",
+        "tags": ["inventory"],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update_item",
+        "tags": ["inventory"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete_item",
+        "tags": ["inventory"],
+        "responses": {
+          "204": {}
+        }
+      }
+    },
+    "/search": {
+      "post": {
+        "operationId": "search_items",
+        "tags": ["search"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["term"],
+                "properties": {
+                  "term": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

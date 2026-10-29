@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pinned public API compatibility > accounts for every operation in github-3.0.json.gz 1`] = `
+[
+  {
+    "method": "get",
+    "path": "/octocat",
+    "reason": "Unsupported response media type: application/octocat-stream",
+  },
+  {
+    "method": "get",
+    "path": "/repos/{owner}/{repo}/contents/{path}",
+    "reason": "Read HTTP methods with request bodies are not supported.",
+  },
+  {
+    "method": "post",
+    "path": "/repos/{owner}/{repo}/releases/{release_id}/assets",
+    "reason": "Unsupported request media type: application/octet-stream",
+  },
+]
+`;
+
+exports[`Pinned public API compatibility > accounts for every operation in github-3.1.json.gz 1`] = `
+[
+  {
+    "method": "get",
+    "path": "/octocat",
+    "reason": "Unsupported response media type: application/octocat-stream",
+  },
+  {
+    "method": "get",
+    "path": "/repos/{owner}/{repo}/contents/{path}",
+    "reason": "Read HTTP methods with request bodies are not supported.",
+  },
+  {
+    "method": "post",
+    "path": "/repos/{owner}/{repo}/releases/{release_id}/assets",
+    "reason": "Unsupported request media type: application/octet-stream",
+  },
+]
+`;
+
+exports[`Pinned public API compatibility > accounts for every operation in oai-query-3.2.yaml 1`] = `[]`;
+
+exports[`Pinned public API compatibility > accounts for every operation in oai-tags-3.2.yaml 1`] = `[]`;
+
+exports[`Pinned public API compatibility > accounts for every operation in petstore-3.0.yaml 1`] = `
+[
+  {
+    "method": "post",
+    "path": "/pet/{petId}/uploadImage",
+    "reason": "Unsupported request media type: application/octet-stream",
+  },
+]
+`;
